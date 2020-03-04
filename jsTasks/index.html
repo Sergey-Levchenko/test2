@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    ul,
+    li,
+    p,
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 0;
+      padding: 0;
+      display: block;
+      list-style: none;
+    }
+
+    .form {
+      width: 300px;
+      height: 150px;
+      box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    .form__input {
+      height: 40px;
+      padding: 0 15px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      width: 100%;
+      font-size: 17px;
+      color: rgb(199, 128, 240);
+      border: 2px solid rgb(210, 154, 243);
+      border-radius: 20px;
+      outline: none;
+    }
+
+    .form__btns {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .form__btn {
+      width: 120px;
+      height: 40px;
+      border-radius: 20px;
+      color: rgb(199, 128, 240);
+      font-weight: 700;
+      font-size: 17px;
+      border: 2px solid rgb(210, 154, 243);
+      background-color: rgb(255, 255, 255);
+      outline: none;
+    }
+
+    .form__btn:disabled {
+      border-color: rgb(211, 211, 211);
+      color: rgb(211, 211, 211);
+    }
+
+    .old-result {
+      text-align: center;
+      display: block;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 50px;
+      margin: 0;
+      margin-bottom: 20px;
+    }
+
+    .list {
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .item {
+      max-width: 300px;
+      margin: 20px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid rgb(167, 164, 164);
+    }
+    .item__title {
+      margin: 10px 0;
+    }
+    .item__image {
+      max-width: 250px;
+    }
+    .item__options {
+      width: 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .item__options h4{
+      margin-bottom: 15px;
+    }
+    .item__options li{
+      line-height: 25px;
+      font-size: 15px;
+    }
+    .item__options span{
+      font-weight: 600;
+    }
+  </style>
+
+  <body>
+    <form class="form" action="#" id="form">
+      <input type="number" class="form__input" id="input" />
+      <div class="form__btns">
+        <button type="reset" class="form__btn form__btn_r">Clear</button>
+        <button type="submit" class="form__btn form__btn_s" disabled>
+          Set
+        </button>
+      </div>
+    </form>
+    <ul class="list"></ul>
+    <script src="task1.js"></script>
+    <script src="task2.js"></script>
+    <script src="task3.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="task4.js"></script>
+  </body>
+</html>
