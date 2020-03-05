@@ -7,7 +7,7 @@
         </div>
       </v-col>
       <v-col cols="7">
-        <h1 class="text-uppercase display-2" @click="test">{{movie.name}}</h1>
+        <h1 class="text-uppercase display-2">{{movie.name}}</h1>
         <p class="font-weight-thin date font-italic pb-0 mb-0 mt-5">{{getDate(movie.dateOfRelease)}}</p>
 
         <ul class="genres mb-10">
@@ -43,9 +43,6 @@ export default {
     },
     getDate(date) {
       return getLocaleDate(date);
-    },
-    test() {
-      console.log(this.movie);
     }
   },
   created() {

@@ -19,6 +19,7 @@
       <v-card-actions class="pa-4">
         <v-spacer></v-spacer>
         <v-btn color="orange" text @click="goToMoviePage">open</v-btn>
+        <v-btn color="orange" text @click="goToMovieBook">book</v-btn>
       </v-card-actions>
     </v-card>
   </v-col>
@@ -44,6 +45,9 @@ export default {
     },
     goToMoviePage() {
       this.$router.push(`/movie/${this.movie._id}`);
+    },
+    goToMovieBook() {
+      this.$router.push(`/booking/${this.movie._id}`);
     }
   }
 };

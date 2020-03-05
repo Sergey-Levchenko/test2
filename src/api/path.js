@@ -7,6 +7,7 @@ const path = {
     movieSessions: {
         getAllMovieSessions: () => '/movieShows',
         getMovieSessionById: id => `/movieShows?movie_id=${id}`,
+        postMovieSessionReserve: () => `/bookingPlace`,
     }
 };
 
