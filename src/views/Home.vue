@@ -1,46 +1,36 @@
 <template>
   <div class="home">
     <v-container>
-      <v-row>
-        <v-col cols="4" v-for="(item, i) in getMovies" :key="`movie_${i}`">
-          <v-card class="mx-auto" max-width="400">
-            <v-img class="white--text align-end" height="200px" :src="item.pictureLink"></v-img>
-
-            <v-card-title>{{item.name}}</v-card-title>
-            <v-card-subtitle class="pb-0">Number 10</v-card-subtitle>
-
-            <v-card-text class="text--primary">
-              <div>Whitehaven Beach</div>
-
-              <div>Whitsunday Island, Whitsunday Islands</div>
-            </v-card-text>
-
-            <v-card-actions>
-              <v-btn color="orange" text>Share</v-btn>
-
-              <v-btn color="orange" text>Explore</v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
+      <v-row v-if="Boolean(movies.length)">
+        <MovieCard v-for="movie in movies" :key="`movie-${movie._id}`" :movie="movie" />
       </v-row>
     </v-container>
   </div>
 </template>
 
 <script>
-import { createNamespacedHelpers } from "vuex";
-const { mapGetters } = createNamespacedHelpers("movies");
+import { mapActions } from "vuex";
+import { http, path } from "../api";
+import MovieCard from "../components/MovieCard";
 
 export default {
   name: "Home",
-  components: {},
-  computed: {
-    ...mapGetters(["getMovies"])
+  components: { MovieCard },
+  data: () => ({
+    movies: []
+  }),
+  methods: {
+    ...mapActions({
+      setNotification: "ui/setNotification"
+    })
   },
-  mounted() {
-    const response = this.axios.get("/movies").then(res => {
-      // console.log(res.data[0]);
-      // console.log(new Date(res.data[0].dateOfRelease).getTime());
+  created() {
+    http.get(path.movies.getAllMovies()).then(fetchedMovies => {
+      this.movies = fetchedMovies.payload;
+      this.setNotification({
+        type: "success",
+        message: "Movies are loaded"
+      });
     });
   }
 };

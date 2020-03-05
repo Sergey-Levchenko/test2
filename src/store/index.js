@@ -1,17 +1,13 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import movies from '@/store/movies'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import ui from './modules/ui';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
-  modules: {
-    movies: {
-      namespaced: true,
-      ...movies
-    }
-  },
-  state: {},
+  namespaced: true,
+  sate: {},
   mutations: {},
-  actions: {}
-})
+  actions: {},
+  modules: {ui}
+});
