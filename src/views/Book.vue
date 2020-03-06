@@ -70,7 +70,7 @@ export default {
     },
     bookingPlace() {
       http
-        .post(path.movieSessions.postMovieSessionReserve(), {})
+        .post(path.movieSessions.postMovieSessionReserve(), this.selectedPlace)
         .then(response => {
           console.log(response);
         });
