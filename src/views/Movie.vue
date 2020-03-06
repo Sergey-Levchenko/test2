@@ -17,6 +17,7 @@
           </li>
         </ul>
         <p class="text--primary description">{{ movie.description }}</p>
+        <v-btn color="orange" text @click="goToMovieBook">book</v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -43,6 +44,9 @@ export default {
     },
     getDate(date) {
       return getLocaleDate(date);
+    },
+    goToMovieBook() {
+      this.$router.push(`/booking/${this.movie._id}`);
     }
   },
   created() {

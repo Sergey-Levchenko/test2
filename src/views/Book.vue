@@ -18,7 +18,7 @@
           </div>
         </div>
         <transition name="fade">
-          <v-card class="my-5" v-show="'row_id' in selectedPlace" key="card">
+          <v-card class="my-5" v-show="showBook" key="card">
             <v-card-title class="mb-5">Reservation place</v-card-title>
             <v-card-text class="pb-0">Selected:</v-card-text>
             <v-card-text>Row: {{selectedPlace.row_id+1}}, place: {{selectedPlace.place_position+1}}</v-card-text>
@@ -45,6 +45,11 @@ export default {
     movie: {},
     selectedPlace: {}
   }),
+  computed: {
+    showBook() {
+      return "row_id" in this.selectedPlace;
+    }
+  },
   methods: {
     ...mapActions({
       setNotification: "ui/setNotification"
@@ -53,7 +58,6 @@ export default {
       return getGenreName(genreId);
     },
     placeHandler(row, place) {
-      console.log(this.session);
       if (
         this.selectedPlace.row_id == row &&
         this.selectedPlace.place_position == place
@@ -72,7 +76,10 @@ export default {
       http
         .post(path.movieSessions.postMovieSessionReserve(), this.selectedPlace)
         .then(response => {
-          console.log(response);
+          this.setNotification({
+            type: "success",
+            message: `Success! Reservation code: ${response.payload}`
+          });
         });
     }
   },

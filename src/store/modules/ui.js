@@ -24,7 +24,7 @@ const ui = {
       commit(UI.SET_NOTIFICATION, payload);
       setTimeout(() => {
         dispatch("clearNotification");
-      }, 2000);
+      }, 1000);
     },
     clearNotification({ commit }) {
       commit(UI.HIDE_NOTIFICATION);

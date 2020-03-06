@@ -6,7 +6,7 @@
       </v-col>
       <v-col class="d-flex justify-space-between" cols="12">
         <v-checkbox
-          v-model="checkbox[i]"
+          v-model="checkbox[i-1]"
           v-for="i in 5"
           :key="`checkbox${i}`"
           :label="genreName(i-1)"
@@ -61,16 +61,12 @@ export default {
   },
   watch: {
     checkbox(val) {
-      const tp = this.checkbox.reduce((str, item, i) => {
-        if (item) return str + i;
-        else return "";
-      }, "");
-      this.genreQuery = tp.split("").join(",");
-    }
-  },
-  created() {
-    for (let i = 0; i < 5; i++) {
-      this.$set(this.selectItems, i, this.genreName(i));
+      this.genreQuery = val
+        .reduce((acc, item, i) => {
+          if (item) acc.push(i);
+          return acc;
+        }, [])
+        .join(",");
     }
   }
 };
