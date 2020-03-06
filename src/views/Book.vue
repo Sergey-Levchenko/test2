@@ -77,25 +77,19 @@ export default {
     }
   },
   created() {
-    http
-      .get(path.movieSessions.getMovieSessionById(this.$route.params.movieId))
-      .then(fetchedSession => {
-        this.session = fetchedSession.payload;
-        this.setNotification({
-          type: "success",
-          message: "Movie is loaded"
-        });
+    Promise.all([
+      http.get(
+        path.movieSessions.getMovieSessionById(this.$route.params.movieId)
+      ),
+      http.get(path.movies.getMovieById(this.$route.params.movieId))
+    ]).then(fetchAll => {
+      this.session = fetchAll[0].payload;
+      this.movie = fetchAll[1].payload;
+      this.setNotification({
+        type: "success",
+        message: "Session is loaded"
       });
-
-    http
-      .get(path.movies.getMovieById(this.$route.params.movieId))
-      .then(fetchedMovie => {
-        this.movie = fetchedMovie.payload;
-        this.setNotification({
-          type: "success",
-          message: "Movie is loaded"
-        });
-      });
+    });
   }
 };
 </script>
