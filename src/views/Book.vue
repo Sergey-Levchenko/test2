@@ -5,6 +5,7 @@
         <h1 class="text-center display-2 mb-10">Booking</h1>
         <h2 class="text-center display-1 mb-2">{{movie.name}}</h2>
         <p class="text-center">Start time: {{new Date(session.startTime).toLocaleTimeString()}}</p>
+        <p class="text-center">Price: {{session.ticketPrice}}</p>
         <div class="hall">
           <div class="hall__row" v-for="(row, i) in session.places" :key="`hall-row-${i}`">
             <div
