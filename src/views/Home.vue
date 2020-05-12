@@ -27,6 +27,7 @@ export default {
   created() {
     http.get(path.movies.getAllMovies()).then(fetchedMovies => {
       this.movies = fetchedMovies.payload;
+      console.log(this.movies);
       this.setNotification({
         type: "success",
         message: "Movies are loaded"

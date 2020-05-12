@@ -25,7 +25,7 @@ http.interceptors.response.use(
       message: config.statusText,
       payload: config.data
     };
-  },
+  },    
   error => {
     store.dispatch("ui/toggleIsLoading");
     store.dispatch(

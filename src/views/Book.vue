@@ -3,17 +3,33 @@
     <v-row>
       <v-col>
         <h1 class="text-center display-2 mb-10">Booking</h1>
-        <h2 class="text-center display-1 mb-2">{{movie.name}}</h2>
-        <p class="text-center">Start time: {{new Date(session.startTime).toLocaleTimeString()}}</p>
-        <p class="text-center">Price: {{session.ticketPrice}}</p>
+        <h2 class="text-center display-1 mb-2">{{ movie.name }}</h2>
+        <p class="text-center">
+          Start time: {{ new Date(session.startTime).toLocaleTimeString() }}
+        </p>
+        <p class="text-center">Price: {{ session.ticketPrice }}</p>
         <div class="hall">
-          <div class="hall__row" v-for="(row, i) in session.places" :key="`hall-row-${i}`">
+          <div
+            class="hall__row"
+            v-for="(row, i) in session.places"
+            :key="`hall-row-${i}`"
+          >
             <div
-              :class="[`hall__place hall__place_${j+1}`,{active: selectedPlace.row_id == i && selectedPlace.place_position == j}]"
+              :class="[
+                `hall__place hall__place_${j + 1}`,
+                {
+                  active:
+                    selectedPlace.row_id == i &&
+                    selectedPlace.place_position == j
+                }
+              ]"
               v-for="(place, j) in row"
-              :key="`hall-place-${i+j}`"
-              v-html="j+1"
-              :style="{backgroundColor: (place.isFree?'green':'red'), cursor: (place.isFree?'pointer':'auto')}"
+              :key="`hall-place-${i + j}`"
+              v-html="j + 1"
+              :style="{
+                backgroundColor: place.isFree ? 'green' : 'red',
+                cursor: place.isFree ? 'pointer' : 'auto'
+              }"
               @click="placeHandler(i, j)"
             ></div>
           </div>
@@ -22,10 +38,15 @@
           <v-card class="my-5" v-show="showBook" key="card">
             <v-card-title class="mb-5">Reservation place</v-card-title>
             <v-card-text class="pb-0">Selected:</v-card-text>
-            <v-card-text>Row: {{selectedPlace.row_id+1}}, place: {{selectedPlace.place_position+1}}</v-card-text>
+            <v-card-text
+              >Row: {{ selectedPlace.row_id + 1 }}, place:
+              {{ selectedPlace.place_position + 1 }}</v-card-text
+            >
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="orange" class="ma-3" @click="bookingPlace">Reserve</v-btn>
+              <v-btn color="orange" class="ma-3" @click="bookingPlace"
+                >Reserve</v-btn
+              >
             </v-card-actions>
           </v-card>
         </transition>
@@ -121,6 +142,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+
   }
 }
 .hall__place.active {
