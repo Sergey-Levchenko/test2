@@ -16,7 +16,7 @@ import Loader from "@/components/Loader";
 import Notification from "@/components/Notification";
 import Header from "@/components/Header";
 export default {
-  name: "App",
+   name: "App",
 
   components: { Header, Loader, Notification },
   methods: {}

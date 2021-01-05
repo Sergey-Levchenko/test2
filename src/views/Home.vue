@@ -33,6 +33,7 @@ export default {
         message: "Movies are loaded"
       });
     });
+    console.log(this);
   }
 };
 </script>
